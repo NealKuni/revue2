@@ -8,6 +8,7 @@
     "start": "node server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
+  "proxy": "18.206.211.30",
   "keywords": [],
   "author": "",
   "license": "ISC",
