@@ -15,8 +15,5 @@ module.exports = () => {
 
 }
 
-const connection = mongoose.connection;
-connection.once("open", () => 
-console.log("MongoDB connnection established successfully")
-);
+
 
