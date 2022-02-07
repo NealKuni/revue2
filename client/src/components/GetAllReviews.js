@@ -34,17 +34,9 @@ const GetAllReviews = (props) => {
                         <span style={{color: "#36454F"}}> Posted By: {eachReview.createdBy.firstName} </span>
                         <p className='text-wrap'>{eachReview.review}</p>   
                         <div className='row my-5'>
-                            {/* <div className='col-sm-2'>
-                                <Link to={`/update/${eachReview._id}`}>
-                                    <button className='btn btn-outline-sucess'> Update </button>
-                                </Link>
-                            </div>
-                            <div className='col-sm-2'>
-                                <button className='btn btn-outline-sucess'>Delete</button>
-                            </div>
-                            <div>
-                                <hr/>
-                            </div> */}
+                        <div>
+                            <hr/>
+                        </div>
                         </div>
 
                     </div>  
