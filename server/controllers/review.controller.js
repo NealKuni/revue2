@@ -7,30 +7,24 @@ module.exports = {
     post: (req, res) => {
         const decodedJWT = jwt.decode(req.cookies.usertoken, { complete : true });
         const userId = decodedJWT.payload._id;
-
+        
         
         // assign "createdBy" to userId. This is how we'll track which user created this review. 
         const newReview = new Review({
             title: req.body.title,
             location: req.body.location,
             review: req.body.review,
-            image: req.file.originalname,
-            imagePath: req.file.path,
-            imageType: req.file.mimetype,
-            imageSize: fileSizeFormatter( req.file.size, 2),
             createdBy: userId,
         })
         
         // newReview.createdBy = userId;
-        console.log(`image uploaded: ${req.image}`)
+        
         console.log(newReview)
 
         newReview.save()
             .then((review) => {
                 console.log(review)
-                console.log(req.file)
-                res.status(201).send('file uploaded successfully')
-                
+                res.send('review created successfully')
             })
             .catch((err) => {
                 console.log(err)
@@ -94,7 +88,6 @@ module.exports = {
                 updatedReview.title = req.body.title;
                 updatedReview.location = req.body.location;
                 updatedReview.review = req.body.review;
-                updatedReview.image = req.file.originalname;
 
                 updatedReview.save()
                 .then(() => {
@@ -130,13 +123,13 @@ module.exports = {
     }
 }
 
-const fileSizeFormatter = (bytes, decimal) => {
-    if(bytes === 0) {
-        return "0 Bytes"
-    } 
-    const dm = decimal || 2;
-    const sizes = [ 'Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'YB', 'ZB'];
-    const index = Math.floor(Math.log(bytes) / Math.log(1000));
-    return parseFloat((bytes / Math.pow(1000, index)).toFixed(dm)) + ' ' +  sizes[index];
-}
+// const fileSizeFormatter = (bytes, decimal) => {
+//     if(bytes === 0) {
+//         return "0 Bytes"
+//     } 
+//     const dm = decimal || 2;
+//     const sizes = [ 'Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'YB', 'ZB'];
+//     const index = Math.floor(Math.log(bytes) / Math.log(1000));
+//     return parseFloat((bytes / Math.pow(1000, index)).toFixed(dm)) + ' ' +  sizes[index];
+// }
 

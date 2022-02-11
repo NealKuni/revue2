@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const path = require('path');
+// const path = require('path');
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
-const multer = require("multer");
+// const multer = require("multer");
 const bodyParser = require('body-parser');
 
 
@@ -14,7 +14,8 @@ app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(express.json());                           
 app.use(express.urlencoded({ extended: true }));   
 
-app.use( "/uploads", express.static(path.join(__dirname,'uploads')));
+// app.use( "/uploads", express.static(path.join(__dirname,'uploads')));
+// app.use( "/uploads", express.static('uploads'));
 
 
 require('./config/mongoose.config')();    

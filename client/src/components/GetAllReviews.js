@@ -24,10 +24,7 @@ const GetAllReviews = (props) => {
                 return(
                     
                     <div  key={index}>
-                        <div className='d-flex'>
-                            <img src= {`http://localhost:8000/uploads/${eachReview.imagePath}`}  style={{width: 350}} alt="img" />
-                            
-                        </div>
+                        
                         <h2>{eachReview.title}</h2>
                         <span style={{color: "#36454F"}}> Location: {eachReview.location}</span>
                         <br/>

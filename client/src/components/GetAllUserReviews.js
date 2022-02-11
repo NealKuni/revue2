@@ -31,13 +31,7 @@ const GetAllUserReviews = (props) => {
         {userReviews.map((eachReview, index)=> {
                 return(
                     <div  key={index}>
-                        <div >
-                            <img src= {`http://localhost:8000/${eachReview.imagePath}`} alt="..." style={
-                            {
-                            width: "50%"
-                            }}/>
-                            
-                        </div>
+                        
                         <h2>{eachReview.title}</h2>
                         <span style={{color: "#36454F"}}> Location: {eachReview.location}</span>
                         <p className='text-wrap'>{eachReview.review}</p>   

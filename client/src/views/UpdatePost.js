@@ -9,7 +9,6 @@ const UpdatePost = (props) => {
     const [title, setTitle] = useState('');
     const [location, setLocation] = useState('');
     const [review, setReview] = useState('');
-    const [image, setImage] = useState('');
     const [errors, setErrors] = useState({});
 
 
@@ -28,23 +27,19 @@ const UpdatePost = (props) => {
   }, [])
 
 
-    const onChangeImage = (e) =>{
-        setImage(e.target.files[0])
-    }
-
+   
     const onSubmitHandler = (e) =>{
         e.preventDefault();
 
-        const formData = new FormData();
 
-        formData.append("title", title);
-        formData.append("location", location);
-        formData.append("review", review);
-        formData.append("image", image);
 
 
         axios.put(`http://localhost:8000/api/review/update/${props.id}`, 
-            formData,
+            {
+                title,
+                location,
+                review,
+            },
         {
             withCredentials: true
         })
@@ -99,15 +94,7 @@ const UpdatePost = (props) => {
                     }
                 </div>  
                
-                <div className="mb-3">
-                    <label className="form-label">Upload Photos</label>
-                    <input className="form-control form-control-sm" type="file" name="image" value={image} onChange = { onChangeImage } />
-                    {
-                        errors.image ?
-                        <p className="text-danger" > {errors.image.message} </p>
-                        : null
-                    }
-                </div>
+               
                 <button type="submit" className="btn btn-primary">Submit Review</button>
             </form>
         </div>
